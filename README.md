@@ -1,4 +1,4 @@
-📊 Amazon-EDA-Report
+# 📊 Amazon-EDA-Report
 This project is an Exploratory Data Analysis (EDA) report created in Google Colab to understand the structure, quality, and insights from Amazon video content data. The analysis combines title metadata and credits (cast & crew) to uncover patterns related to content type, genre, country of production, and individual performance (actors/directors).
 
 📁 Files Used
