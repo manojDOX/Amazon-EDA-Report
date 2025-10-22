@@ -1,117 +1,78 @@
-# 📊 Amazon-EDA-Report
-This project is an Exploratory Data Analysis (EDA) report created in Google Colab to understand the structure, quality, and insights from Amazon video content data. The analysis combines title metadata and credits (cast & crew) to uncover patterns related to content type, genre, country of production, and individual performance (actors/directors).
+# 🎬 EDA of Amazon Prime Movies & TV Shows
+
+## **📘 Project Overview**
+
+This project performs an **Exploratory Data Analysis (EDA)** on the *Amazon Prime Video* dataset to uncover meaningful insights about the platform’s content — including trends in genres, ratings, countries, and popularity over time.
+
+The analysis aims to:
+
+* Understand the **distribution of content** across movies and TV shows.
+* Explore **temporal trends** in content release and audience preferences.
+* Identify **top-performing genres, countries, and creators** based on IMDb and TMDB scores.
+* Provide **data-driven insights** that could guide strategic decisions in content planning and acquisition.
+
 ---
-# 📁 Files Used
-data_titles: Contains metadata for Amazon content, such as:
 
-id, title, description
+## **🛠️ Technologies Used**
 
-release_year, runtime, genres
+* **Programming Language:** Python
+* **Environment:** Jupyter Notebook (`EDA_of_Amazon_Prime_Movies_&_TV_Shows.ipynb`)
+* **Libraries & Tools:**
 
-production_countries, age_certification, tmdb_popularity, imdb_score, etc.
+  * **Data Manipulation:** pandas, numpy
+  * **Visualization:** matplotlib, seaborn, plotly
+  * **Data Cleaning & Preprocessing:** pandas, regex, datetime
+  * **Statistical Analysis:** scipy (if used for correlations or distributions)
 
-data_credits: Provides cast and crew information:
+---
 
-person_id, name, role (Actor/Director), id (for linking with data_titles)
+## **📂 Project Structure**
 
-These files were imported directly from Google Drive URLs using pandas.read_csv().
+```
+EDA_of_Amazon_Prime_Movies_&_TV_Shows/
+│
+├── data/
+│   ├── titles.csv                # Dataset containing movie and TV show details
+│   └── credits.csv               # Dataset containing cast and crew details
+│
+├── EDA_of_Amazon_Prime_Movies_&_TV_Shows.ipynb  # Main Jupyter notebook for EDA
+│
+├── visuals/
+│   ├── chart1_content_type.png
+│   ├── chart2_yearly_trend.png
+│   ├── chart3_country_wise.png
+│   ├── chart4_genre_ratings.png
+│   ├── chart5_tmdb_popularity.png
+│   ├── chart6_imdb_genre_trend.png
+│   ├── chart7_genre_country_heatmap.png
+│   └── chart8_cast_crew_scores.png
+│
+├── README.md                    # Project documentation
+└── requirements.txt             # Python dependencies (optional)
+```
 
-# 🔄 Data Preprocessing
-- ✅ Cleaning Steps
-  Duplicates: Identified and removed from both datasets using duplicated() and drop_duplicates().
-  
-  Missing Values:
-  
-  Checked percentage of nulls using isnull().sum()/len(df).
-  
-  Replaced missing values in numerical columns using mean or median.
-  
-  Dropped columns like seasons and age_certification due to high null presence.
-  
-  String to List Conversion: Converted genres and production_countries fields from stringified lists to actual Python lists using eval() safely inside a custom function.
+### **Key Components**
 
-# 📊 Visual Explorations & Insights
-  🔸 Content Type Distribution
-  A pie chart shows the proportion of Movies vs TV Shows on Amazon.
-  
-  Bar plots visualize the number of titles released each year.
-  
-  🔸 Genre & Country Analysis
-  Genres and production countries were exploded (one genre/country per row).
-  
-  Top genres and countries were visualized using bar plots and heatmaps.
-  
-  🔸 IMDb & TMDB Score Analysis
-  Average scores were calculated per genre, plotted side-by-side to compare IMDb vs TMDB ratings.
-  
-  Scores were also grouped by 5-year bins of release_year to observe performance trends over time.
-  
-  🔸 Bubble Chart: Genre vs Score over Time
-  Created interactive bubble plots to show:
-  
-  How different genres performed over time.
-  
-  Bubble size represents the number of titles.
-  
-  Separate plots for Movies and TV Shows.
-  
-  🔸 Heatmap: Top 15 Countries vs Top 15 Genres
-  Visualizes genre preferences across countries.
-  
-  Helps understand which countries favor what kind of content.
+* **Notebook (`.ipynb`)** — Contains the entire workflow: data loading, cleaning, EDA, and visualization.
+* **Data folder** — Holds all CSV files used for analysis.
+* **Visuals folder** — Stores exported plots and charts for presentation.
+* **README.md** — Provides project overview, structure, and insights.
 
-# 👤 Cast & Crew Role Analysis
-  Merging Cast Data
-  Grouped and counted the number of actors and directors per title.
-  
-  Merged this with the main data_titles to form df_titles_credits.
-  
-  People Performance
-  Used explode() to create a row per person per role per title.
-  
-  Merged with names using person_id.
-  
-  Scatter Plot: IMDb Score vs Appearance Count
-  Created a Plotly scatter plot:
-  
-  X-axis: number of titles a person appeared in
-  
-  Y-axis: average IMDb score
-  
-  Color by role (Actor/Director)
-  
-  Size by IMDb score
-  
-  Only included people with at least 3 appearances to ensure reliability
-  
-  Box Plot: Number of Actors vs IMDb Score
-  Shows how the number of actors in a project impacts the IMDb score.
-  
-  Outliers removed (only projects with ≤20 actors shown).
-  
-  📌 What You’ll Learn from This Notebook
-  How Amazon content differs across countries and genres.
-  
-  What kind of content performs well on IMDb and TMDB.
-  
-  Which actors and directors have the strongest positive impact on ratings.
-  
-  Trends in content creation over the years using grouping and visualization.
+---
 
-# 📚 Tools & Libraries Used
-  pandas, numpy: data handling
-  
-  matplotlib, seaborn, plotly.express: visualization
-  
-  eval, explode, groupby, merge: advanced data manipulation
+👉 [Click to Watch Video](https://drive.google.com/file/d/1nL4__REdGlDcS-TeDAumjOjKon-aLsGK/view?usp=sharing)
 
-# ✅ Conclusion
-  This Amazon-EDA-Report helps uncover:
-  
-  High-performing genres and countries
-  
-  Popular release periods
-  
-  Influence of cast size and person-role dynamics on content quality
-  
-  The notebook is rich in clean visualizations, well-handled missing data, and deep analysis of cast and crew effects — ideal for content strategy, recommendation systems, or market analysis.
+
+---
+
+## **📊 Insights from Charts**
+
+1. Movies dominate the platform (≈86%), while TV Shows form only 14%.
+2. There was a sharp rise in content after 2010, peaking around 2020.
+3. USA leads by a wide margin in production, followed by India and the UK.
+4. IMDb top genres are Documentary, History, and Reality, while TMDB top genres are Animation, Reality, and History.
+5. Shows generally have higher TMDB scores than movies; popularity surged significantly after 2015, driven by movies.
+6. Recent years show more content in Drama, Comedy, and Action; older genres like History and War had higher ratings but fewer titles; TV shows often outperform movies in IMDb ratings.
+7. US dominates across most genres; India and UK are strong in Drama and Romance; Japan stands out for Animation; France for Documentary.
+8. Few actors/directors with limited work have exceptional IMDb scores, while high-volume contributors maintain moderate but consistent scores.
+
