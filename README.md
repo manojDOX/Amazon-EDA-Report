@@ -31,10 +31,6 @@ The analysis aims to:
 ```
 EDA_of_Amazon_Prime_Movies_&_TV_Shows/
 │
-├── data/
-│   ├── titles.csv                # Dataset containing movie and TV show details
-│   └── credits.csv               # Dataset containing cast and crew details
-│
 ├── EDA_of_Amazon_Prime_Movies_&_TV_Shows.ipynb  # Main Jupyter notebook for EDA
 │
 ├── visuals/
@@ -48,7 +44,6 @@ EDA_of_Amazon_Prime_Movies_&_TV_Shows/
 │   └── chart8_cast_crew_scores.png
 │
 ├── README.md                    # Project documentation
-└── requirements.txt             # Python dependencies (optional)
 ```
 
 ### **Key Components**
